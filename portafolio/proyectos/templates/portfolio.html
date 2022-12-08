@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- page title -->
+<section class="page-title bg-primary position-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="text-white font-tertiary">Portfolio</h1>
+        </div>
+      </div>
+    </div>
+    <!-- background shapes -->
+    {% comment %} <img src="images/illustrations/page-title.png" alt="illustrations" class="bg-shape-1 w-100">
+    <img src="images/illustrations/leaf-pink-round.png" alt="illustrations" class="bg-shape-2">
+    <img src="images/illustrations/dots-cyan.png" alt="illustrations" class="bg-shape-3">
+    <img src="images/illustrations/leaf-orange.png" alt="illustrations" class="bg-shape-4">
+    <img src="images/illustrations/leaf-yellow.png" alt="illustrations" class="bg-shape-5">
+    <img src="images/illustrations/dots-group-cyan.png" alt="illustrations" class="bg-shape-6">
+    <img src="images/illustrations/leaf-cyan-lg.png" alt="illustrations" class="bg-shape-7"> {% endcomment %}
+  </section>
+
+
+
+  <section class="section">
+    
+    <div class="container">
+      {% if request.user.is_authenticated %}
+      <div class='m-4'>
+        <a href={% url 'create_project' %} class="btn btn-xs btn-secondary">Anadir Proyecto</a>
+      </div>
+      {% endif %}
+      
+      <div class="row">
+        {% for p in object_list%}
+        <div class="col-lg-6 col-sm-6 mb-4">
+          <article class="card shadow">
+            <img class="rounded card-img-top" src='{{ p.image_url }}' alt="repo-image">
+            <div class="card-body">
+              <h3 class="card-title"><a class="text-dark" href='#'>{{ p.title }}</a>
+              </h4>
+              <p class="cars-text">
+                {{ p.description }}
+              </p>
+              <h4>Tags</h4>
+                <p>{{ p.tags }}</p>
+              <a href={{ p.github_url }} class="btn btn-xs btn-primary">Github Repo</a>
+            </div>
+          </article>
+        </div>
+        {% endfor %}
+      </div>
+      
+  
+      
+    </div>
+    
+  
+  </section>
+  <!-- /portfolio -->
+  <!-- /page title -->
+  
+
+{% endblock content %}
