@@ -25,7 +25,10 @@ SECRET_KEY = "django-insecure-m^hd*n(qdm_ni#7cm6_6)9n&((0iqw(@$gy=l6ryao#nypc#45
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '1145-181-233-26-21.ngrok.io',
+    '127.0.0.1'
+    ]
 
 
 # Application definition
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "users.middleware.IPIsvalid" #middleware IPWARE
 ]
 
 ROOT_URLCONF = "portafolio.urls"
@@ -135,3 +139,4 @@ LOGIN_REDIRECT_URL = "index"
 
 LOGOUT_REDIRECT_URL= "/"
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

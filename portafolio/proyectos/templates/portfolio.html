@@ -28,15 +28,15 @@
     <div class="container">
       {% if request.user.is_authenticated %}
       <div class='m-4'>
-        <a href={% url 'create_project' %} class="btn btn-xs btn-secondary">Anadir Proyecto</a>
+        <a href={% url 'create_project' %} class="btn btn-lg btn-secondary">Anadir Proyecto</a>
       </div>
       {% endif %}
       
       <div class="row">
         {% for p in object_list%}
-        <div class="col-lg-6 col-sm-6 mb-4">
+        <div class="col-lg-12 col-sm-12 mb-4">
           <article class="card shadow">
-            <img class="rounded card-img-top" src='{{ p.image_url }}' alt="repo-image">
+            <img class="rounded card-img-top" src='{{ p.photo_url }}' alt="repo-image">
             <div class="card-body">
               <h3 class="card-title"><a class="text-dark" href='#'>{{ p.title }}</a>
               </h4>
