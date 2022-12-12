@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.views.generic import CreateView, ListView
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, ListView,UpdateView,DeleteView
 from django.views import View
 from .models import Project
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -32,3 +33,17 @@ class ProjectCreateView(LoginRequiredMixin,CreateView):
 class ProjectListView(ListView):
     model = Project
     template_name = "./portfolio.html"
+
+class ProjectUpdateView(LoginRequiredMixin,UpdateView):
+    model = Project
+    template_name = "update_project.html"
+    fields = ["title", "tags", "photo_url", "github_url", "description"]
+    success_url = reverse_lazy('portfolio')
+
+class ProjectDeleteView(LoginRequiredMixin,DeleteView):
+    model = Project
+    template_name = "delete_project.html"
+    success_url = reverse_lazy('portfolio')
+
+
+

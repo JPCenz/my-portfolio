@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-title bg-primary position-relative">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+            <h1 class="text-white font-tertiary">Delete Project</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class='section'>
+    <div class="container ">
+        <form method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object.title }}"?</p>
+            {{ form }}
+            <button class="btn btn-xs btn-secondary" type="submit" value="Confirm">Delete</button>
+        </form>
+    </div>
+</section>
+<script>
+    const inputs = document.querySelectorAll("input");
+
+    inputs.forEach((input) => {
+    input.classList.add("form-control");
+    });
+
+    const texts = document.querySelectorAll("textarea");
+
+    texts.forEach((textarea) => {
+    textarea.classList.add("form-control");
+    });
+</script>
+
+
+{% endblock content %}
+
